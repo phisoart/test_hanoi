@@ -1,8 +1,3 @@
-import helper
-import numpy as np
-import main
-
-
 def algo1(_count, src, aux, des, comp_n):
     if _count == 1:
         ##############################

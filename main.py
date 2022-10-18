@@ -1,16 +1,13 @@
 import helper
 import algorithm
-
-def test():
-    return True
+import test
 
 def hanoi(_height, _algorithm):
     source, auxiliary, destination = helper.hanoi_init(_height)
-    comp_n = 0
-
     print("start!")
     helper.hanoi_print(source, auxiliary, destination)
-    out_source, out_auxiliary, out_destination, out_comp_n = algorithm.algo1(len(source), source, auxiliary, destination, comp_n)
+
+    out_source, out_auxiliary, out_destination, out_comp_n = _algorithm(len(source), source, auxiliary, destination, 0)
 
     print("finish!")
     helper.hanoi_print(out_source, out_auxiliary, out_destination)
@@ -19,8 +16,11 @@ def hanoi(_height, _algorithm):
 if __name__ == '__main__':
     height = 4
 
-    # if ~test(Algorithm ###):
-    #     print ('test fail')
+    if not test.hanoi_test(algorithm.algo1):
+        print ('test fail')
+        exit(1)
+    else:
+        print('테스트 통과!')
 
-    comp_n = hanoi(height, "")
+    comp_n = hanoi(height, algorithm.algo1)
     print('height: ' + str(height) + '\ntot move: ' + str(comp_n))
